@@ -1,0 +1,177 @@
+﻿Build docker
+
+docker build -t teste .
+docker run -i -t -p 80:80 teste 
+docker run -i -t -p 80:80 -p 22:22 teste /bin/bash 
+
+#Iniciar postgre
+# material interessante postgre https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-14-04
+
+## http://www.devwilliam.com.br/linux/parte-5-configurando-servidor-web-apache-mysql-e-php-no-ubuntu-server
+##configurar php 
+# https://www.digitalocean.com/community/tutorials/como-instalar-a-pilha-linux-apache-mysql-php-lamp-no-ubuntu-16-04-pt
+
+
+service postgresql status 
+service vsftpd status 
+service apache2 status 
+
+
+service postgresql start
+service apache2 restart
+service vsftpd restart  
+
+listar conteudo do arquivo.
+ tar -tzf lnidb-etc-20150214.tgz  > conteudo.txt
+
+
+chkconfig --list
+sed -i 144d /etc/init.d/postgresql
+link.
+https://www.java.com/en/download/installed.jsp
+
+-Xmx800m
+---------------------configurar apache-mysql-e-php-no-ubuntu-server
+-- verificar se está ok. 
+apache2ctl configtest
+cat "ServerName 172.17.0.2 " >> /etc/apache2/apache2.conf
+---------------------------------vsftpd
+
+lnidb
+
+
+------------------------ APOS INICIAR EXECUTAR OS COMANDOS
+
+service postgresql start
+(como usuario postgres, "su postgres")
+su postgres
+service postgresql start
+
+createuser lnidb
+createdb lnidb -O lnidb
+
+
+createuser lnidb (n/y/n)
+createdb lnidb -O lnidb
+
+Permissoes:
+
+--- mostrar o local do arquivo de configuracao
+psql -t -P format=unaligned -c 'show hba_file';
+-------------------
+
+vi /etc/postgresql/9.5/main/pg_hba.conf 
+
+editar /var/lib/pgsql/data/pg_hba.conf para permitir usuario lnidb
+ser autenticado localmente via trust:
+
+local	all	    lnidb		              trust
+
+tuning do BD:
+
+editar /var/lib/pgsql/data/postgresql.conf e aumentar buffers
+
+  shared_buffers = 2GB
+  temp_buffers = 128MB
+
+psql lnidb lnidb -f /tmp/lnidb-master/lnidb-backend/lnidb.sql
+  
+#como root nao esquecer
+ 
+service postgresql restart
+
+# alterar o arquivo de configuracao do apache senao nao faz download
+
+editar o arquivo: 
+vi /etc/apache2/apache2.conf
+
+linha 293
+procurar por /var/www/html
+
+<Directory /var/www/>
+        Options Indexes FollowSymLinks
+	XSendFile on
+	XSendFilePath /home/lnidb2/basket
+	XSendFilePath /home/lnidb2/attach
+	XSendFilePath /home/lnidb2/dicom
+        AllowOverride None
+        Require all granted
+</Directory>
+  
+  
+
+
+####
+cd /tmp/lnidb-master/lnidb-backend/diva
+javac /tmp/lnidb-master/lnidb-backend/diva/*.java -encoding UTF-8
+
+javac *.java 
+jar cfm diva.jar manifest.txt *.class diva.png panctl.png check.png slicectl.png tool{1,2}.png view{1,2,3,4}.png colctl.png updown.png detail.png
+cp diva.jar /var/www/db/lnidb-web
+cp diva.jar /var/www/html
+
+ir na linha 355 do arquivo: 
+vi /var/www/db/lnidb-web/lnidb.inc
+
+vi /var/www/html/lnidb.inc
+service apache2 restart
+
+
+## iniciar o processo perl 
+ cd /usr/local/bin
+ lnidbtask.pl
+ 
+-------------  https://stackoverflow.com/questions/20568836/cant-locate-dbi-pm
+apt-get install -y libdbi-perl
+ 
+If you don't have active perl (and hence don't have ppm), you can also get DBI like this:
+
+perl -MCPAN -e 'install DBI'
+You may need to install drivers for Postgres like this:
+
+perl -MCPAN -e 'install DBD::Pg'
+
+
+
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
