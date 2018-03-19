@@ -20,21 +20,6 @@ RUN apt-get install -y openssh-server
 
 RUN apt-get install -y sysv-rc-conf #Para iniciar automaticamente https://askubuntu.com/questions/2263/chkconfig-alternative-for-ubuntu-server
 
-#RUN service postgresql initdb
-#RUN service postgresql start 
-#RUN /etc/init.d/postgresql start
-
-#RUN yum -y install gcc make php php-pgsql vsftpd postgresql-server postgresql
-#RUN yum -y install perl perl-DBI perl-DBD-Pg httpd httpd-devel java-1.6.0-openjdk-devel
-#RUN yum -y install zip unzip 
-#RUN echo "SELINUX=disabled" >> /etc/sysconfig/selinux
-#RUN service postgresql initdb
-#RUN service postgresql start 
-## Retirada do arquivo de configuracao para nao dar erro:
-#RUN sed -i 114d /etc/init.d/postgresql
-#
-#
-#
 #RUN chkconfig --levels 345 postgresql on
 #RUN chkconfig --levels 345 httpd on
 #RUN chkconfig --levels 345 vsftpd on
