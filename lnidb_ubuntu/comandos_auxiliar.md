@@ -39,3 +39,58 @@ Criar usuarios
 createuser lnidb
 createdb lnidb -O lnidb
 ```
+
+Para mostrar o local do arquivo de configuracao do postgre
+
+```
+psql -t -P format=unaligned -c 'show hba_file';
+```
+
+editar o arquivo:
+``` 
+vi /etc/apache2/apache2.conf
+```
+
+linha 293
+procurar por /var/www/html
+```
+<Directory /var/www/>
+        Options Indexes FollowSymLinks
+	XSendFile on
+	XSendFilePath /home/lnidb2/basket
+	XSendFilePath /home/lnidb2/attach
+	XSendFilePath /home/lnidb2/dicom
+        AllowOverride None
+        Require all granted
+</Directory>
+```  
+  
+
+
+Compilar o programa em java 
+```
+cd /tmp/lnidb-master/lnidb-backend/diva
+javac /tmp/lnidb-master/lnidb-backend/diva/*.java -encoding UTF-8
+javac *.java 
+jar cfm diva.jar manifest.txt *.class diva.png panctl.png check.png slicectl.png tool{1,2}.png view{1,2,3,4}.png colctl.png updown.png detail.png
+cp diva.jar /var/www/db/lnidb-web
+cp diva.jar /var/www/html
+```
+
+
+ir na linha 355 do arquivo lnidb.inc alterar o endereco ip p/ o servidor em questao 
+```
+vi /var/www/html/lnidb.inc
+```
+Reiniciar o apache 
+```
+service apache2 restart
+```
+
+
+Para iniciar o processo em perl (processamento dos arquivos)
+```
+ cd /usr/local/bin
+ lnidbtask.pl
+```
+
