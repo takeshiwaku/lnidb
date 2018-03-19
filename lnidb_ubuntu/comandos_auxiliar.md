@@ -20,17 +20,17 @@ service apache2 restart
 service vsftpd restart  
 ```
 
-Verificar se o arquivo de configuracao do apache está correto
+#Verificar se o arquivo de configuracao do apache está correto
 ```
 apache2ctl configtest
 ```
 
-Configuracao do banco postgre
+#Configuracao do banco postgre
 Iniciar o servico
 ```
 service postgresql start
 ```
-Conectar com usuario postgres
+#Conectar com usuario postgres
 ```
 su postgres
 ```
