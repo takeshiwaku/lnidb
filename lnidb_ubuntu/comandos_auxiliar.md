@@ -82,13 +82,20 @@ ir na linha 355 do arquivo lnidb.inc alterar o endereco ip p/ o servidor em ques
 ```
 vi /var/www/html/lnidb.inc
 ```
+
+Valor original, alterar p/ o IP, que vai estar o servidor, e na realidade o melhor é colocar no servidor de DNS, que provavelmente tem ae na unicamp.
+```
+  $method = "http://143.106.129.42/db/getfile.php?f=";
+```
+
+
 Reiniciar o apache 
 ```
 service apache2 restart
 ```
 
 
-Para iniciar o processo em perl (processamento dos arquivos)
+Para iniciar o processo em perl (processamento dos arquivos), colocar na inicializacao do servidor assim quando houver o boot nao terá que iniciar manualmente.
 ```
  cd /usr/local/bin
  lnidbtask.pl
