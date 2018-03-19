@@ -28,7 +28,7 @@ RUN apt-get install -y sysv-rc-conf
 #COPY vsftpd.conf /etc/vsftpd.conf
 
 # Copia do repositorio p/ a pasta /tmp
-copy lnidb-master.zip /tmp
+RUN copy lnidb-master.zip /tmp
 RUN unzip /tmp/lnidb-master.zip  -d /tmp
 
 # Verificar a necessidade de copia desta configuracao.
