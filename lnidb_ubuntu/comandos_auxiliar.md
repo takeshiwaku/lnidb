@@ -40,6 +40,12 @@ createuser lnidb
 createdb lnidb -O lnidb
 ```
 
+Criar o banco de dados atraves do comando (utilizando o o usuario "postgres")
+```
+psql lnidb lnidb -f /tmp/lnidb-master/lnidb-backend/lnidb.sql
+```
+
+
 Para mostrar o local do arquivo de configuracao do postgre
 
 ```
