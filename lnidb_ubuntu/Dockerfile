@@ -107,7 +107,7 @@ RUN cp /tmp/lnidb-master/lnidb-web/*.* /var/www/db/lnidb-web
 RUN cp /tmp/lnidb-master/lnidb-web/*.* /var/www/html
 RUN chmod 777 -R /var/www/db/*
 
-# Insalacao do pacote DBI do perl 
+# Instalação do pacote DBI do perl 
 RUN perl -MCPAN -e 'install DBI'
 RUN perl -MCPAN -e 'install DBD::Pg'
 
