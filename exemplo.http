@@ -1,5 +1,1 @@
-### 2. Consulta de Work Orders (Equipe Redes N1)
-# Esta requisição utiliza o token armazenado automaticamente
-GET https://nuclea-restapi.onbmc.com/api/arsys/v1/entry/WOI:WorkOrderInterface?q='Support Group Name' = "Redes N1"
-Authorization: AR-JWT {{jwt_token}}
-Accept: application/json
+sdfdsfsdf sf sd fsd
