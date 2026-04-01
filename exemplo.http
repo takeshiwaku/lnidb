@@ -1,1 +1,21 @@
-{% client.global.set("auth_token", response.body); %} 
+### Chamada de Login e Armazenamento de Token
+POST https://nuclea-restapi.onbmc.com/api/jwt/login
+Content-Type: application/x-www-form-urlencoded
+
+username=xxxxxx&
+password=yyyyyy
+
+> {% 
+    // Este script roda após a execução da requisição
+    if (response.status === 200) {
+        // Armazena o corpo da resposta (o token) na variável global 'auth_token'
+        client.global.set("auth_token", response.body);
+        client.log("Token armazenado com sucesso!");
+    }
+%}
+
+###
+### Exemplo de uma requisição subsequente usando o Token
+GET https://nuclea-restapi.onbmc.com/api/algum-recurso
+Authorization: Bearer {{auth_token}}
+Accept: application/json
