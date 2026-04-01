@@ -1,0 +1,6 @@
+### Realizar Login para obter o token JWT
+POST https://nuclea-restapi.onbmc.com/api/jwt/login
+Content-Type: application/x-www-form-urlencoded
+
+username=xxxxxx&
+password=yyyyyy
