@@ -1,1 +1,6 @@
-curl --location 'https://nuclea-qa-restapi.onbmc.com/api/arsys/v1/entry/HPD:IncidentInterface?q=%27Status%27%20%3D%20%22Closed%22%20' \
+### Realizar cópia de terceiros
+POST https://xyz.execute-api.us-east-1.amazonaws.com/prd/terceiros
+acao: copiar
+anomesorigem: 202504
+anomesdestino: 202506
+deptos: FIRMAS E PODERES
