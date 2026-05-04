@@ -1,3 +1,8 @@
+e528ed5c-4ce9-495d-97b9-e2237053f567
+
+
+
+
 # 🛡️ Relatório de Testes: Segurança de LLM
 **Projeto:** Validação de Robustez contra Prompt Injection  
 **Data:** 09/04/2026  
